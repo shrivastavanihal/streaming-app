@@ -1,0 +1,46 @@
+:root {
+  --nav-background-color: #403a3ab8;
+  --navColor: #ffc107;
+  --navHeight: 70px;
+  --navWidth: 100%;
+  --navDisplay: flex;
+}
+
+#navbarBlock {
+  /* background-color: var(--nav-background-color); */
+  color: var(--navColor);
+  height: var(--navHeight);
+  width: var(--navWidth);
+  position: absolute;
+  z-index: 1;
+}
+
+.navBarArticle {
+  width: 85%;
+  height: var(--navHeight);
+  display: var(--navDisplay);
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoBlockAnchor {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #ffc107;
+  /* font-style: revert; */
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: capitalize;
+  letter-spacing: 1.2px;
+  font-size: 1.3em;
+  /* text-shadow: 1px 1px 1px red; */
+}
+
+.logoBlockSpanIcon {
+  color: #fff;
+  padding: 0;
+  font-size: 33px;
+  margin: 0px 12px 0 0;
+}
