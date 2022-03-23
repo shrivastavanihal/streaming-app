@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 //fire base
 import { auth } from "../../api/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  updateProfile,
+} from "firebase/auth";
 import Styles from "../authComponent/auth.module.css";
+import md5 from "md5";
 
 const Signup = () => {
   let [username, setUsername] = useState("");
@@ -11,6 +17,7 @@ const Signup = () => {
   let [password, setPassword] = useState("");
   let [confirmPassword, setConfirmPassword] = useState("");
   let [loading, setLoading] = useState(false);
+  let navigate = useNavigate();
 
   //to fetch data on submitting
   let handleSubmit = async e => {
@@ -27,7 +34,20 @@ const Signup = () => {
           password
         );
         toast.success("successfully user created");
+        navigate("/signin");
         console.log(userData);
+        let user = userData.user;
+        sendEmailVerification(user);
+        updateProfile(user, {
+          // photoURL:
+          //   "https://cdn.landesa.org/wp-content/uploads/default-user-image.png",
+          // photoURL: `
+          // https://robohash.org/${email}
+          // `,
+          photoURL: `https://www.gravatar.com/avatar/${md5(email)}q=identicon`,
+          displayName: username,
+        });
+        toast.info(`Verification email has been send to ${email} address`);
       }
     } catch (error) {
       console.log(error);
@@ -52,8 +72,6 @@ const Signup = () => {
             <input
               type="text"
               value={username}
-              name=""
-              id="username"
               className={Styles.formControl}
               onChange={e => setUsername(e.target.value)}
             />
@@ -65,8 +83,6 @@ const Signup = () => {
             <input
               type="email"
               value={email}
-              name=""
-              id=""
               className={Styles.formControl}
               onChange={e => setEmail(e.target.value)}
             />
@@ -78,8 +94,6 @@ const Signup = () => {
             <input
               type="password"
               value={password}
-              name=""
-              id=""
               className={Styles.formControl}
               onChange={e => setPassword(e.target.value)}
             />
@@ -91,11 +105,17 @@ const Signup = () => {
             <input
               type="password"
               value={confirmPassword}
-              name=""
-              id=""
               className={Styles.formControl}
               onChange={e => setConfirmPassword(e.target.value)}
             />
+          </div>
+          <div>
+            <p className={Styles.gotoAuth}>
+              Already have an account?
+              <Link className={Styles.gotoAuthLink} to="/signin">
+                Login
+              </Link>
+            </p>
           </div>
           <div>
             <button className={Styles.btn}>

@@ -27,12 +27,13 @@
 .formControl {
   width: 100%;
   border-radius: 4px;
-  background: transparent;
+  background: #444;
   border: 1px solid #444;
   padding: 10px 0;
   margin: 10px 0;
   outline: invert;
   color: #fff;
+  border: none;
 }
 .btn {
   width: 100%;
@@ -54,4 +55,28 @@
   background-color: #111;
   border: 1px solid #ffc107;
   transform: translate(0.2%);
+}
+
+.eyeIcon {
+  position: relative;
+}
+
+.eyeIconSVG {
+  position: absolute;
+  left: -32px;
+  top: 3px;
+  font-size: 19px;
+  color: #ffc107;
+}
+
+.gotoAuth {
+  font-size: 13px;
+  padding: 10px 4px;
+  float: right;
+}
+
+.gotoAuthLink {
+  color: #d8a91d;
+  /* text-decoration: none; */
+  padding: 0px 10px;
 }
