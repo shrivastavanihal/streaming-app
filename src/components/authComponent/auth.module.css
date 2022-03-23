@@ -1,0 +1,57 @@
+#authSection {
+  background-color: #333333ba;
+}
+.authArticle {
+  width: 40%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}
+.formBlock {
+  background-color: #111;
+  padding: 20px;
+  border-bottom: 2px solid #ffc107;
+  border-radius: 6px;
+  width: 60%;
+}
+.formLabel {
+  display: block;
+  padding: 5px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.formControl {
+  width: 100%;
+  border-radius: 4px;
+  background: transparent;
+  border: 1px solid #444;
+  padding: 10px 0;
+  margin: 10px 0;
+  outline: invert;
+  color: #fff;
+}
+.btn {
+  width: 100%;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: capitalize;
+  background-color: #ffc107;
+  border: 1px solid #ffc107;
+  transform: translate(0%);
+  transition: ease all 0.7s;
+}
+.btn:hover {
+  background-color: #111;
+  border: 1px solid #ffc107;
+  transform: translate(0.2%);
+}

@@ -1,17 +1,21 @@
 import React from "react";
-import PreLoadedVideo from "./components/PreLoadedVideo";
+import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./pages/navbar/Navbar";
+import StreamBasedRoutes from "./routes/StreamBasedRoutes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
-    <>
+    <Router>
       <header>
         <Navbar />
       </header>
       <main>
-        <PreLoadedVideo />
+        <ToastContainer />
+        <StreamBasedRoutes />
       </main>
-    </>
+    </Router>
   );
 };
 

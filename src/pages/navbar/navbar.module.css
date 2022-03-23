@@ -4,6 +4,7 @@
   --navHeight: 70px;
   --navWidth: 100%;
   --navDisplay: flex;
+  --homeHeaderBackground: transparent;
 }
 
 #navbarBlock {
@@ -11,8 +12,14 @@
   color: var(--navColor);
   height: var(--navHeight);
   width: var(--navWidth);
+  /* position: absolute;
+  z-index: 1; */
+}
+
+.homeClass {
   position: absolute;
   z-index: 1;
+  background-color: var(--homeHeaderBackground) !important;
 }
 
 .navBarArticle {
@@ -43,4 +50,15 @@
   padding: 0;
   font-size: 33px;
   margin: 0px 12px 0 0;
+}
+
+.navbarUl {
+  display: flex;
+  list-style: none;
+}
+
+.navbarAnchor {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
 }
