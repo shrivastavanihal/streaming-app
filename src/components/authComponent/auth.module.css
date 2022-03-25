@@ -71,12 +71,12 @@
 
 .gotoAuth {
   font-size: 13px;
-  padding: 10px 4px;
+  padding: 5px 2px;
   float: right;
 }
 
 .gotoAuthLink {
   color: #d8a91d;
   /* text-decoration: none; */
-  padding: 0px 10px;
+  padding: 0px 5px;
 }

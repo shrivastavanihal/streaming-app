@@ -36,7 +36,7 @@ const Signup = () => {
         toast.success("successfully user created");
         navigate("/signin");
         console.log(userData);
-        let user = userData.user;
+        let user = userData.user; 
         sendEmailVerification(user);
         updateProfile(user, {
           // photoURL:

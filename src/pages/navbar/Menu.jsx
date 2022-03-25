@@ -1,32 +1,73 @@
-import React, { useContext } from "react";
+import React, {
+  useContext,
+  useState,
+  useRef,
+  useEffect,
+  Fragment,
+} from "react";
 import { NavLink } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
 import { AuthContext } from "../../api/AuthContext";
 import Styles from "../navbar/navbar.module.css";
 
 const Menu = () => {
+  let [toggle, setToggle] = useState(false);
   let USER = useContext(AuthContext);
+  let toggleRef = useRef();
+  let myRef = useRef();
+
+  let handleClickOutside = e => {
+    if (!myRef.current.contains(e.target) && toggle) {
+      console.log(e.target);
+      setToggle(!toggle);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  });
+
+  let dropDownMenu = () => {
+    setToggle(!toggle);
+  };
 
   let AuthenticatedUser = () => {
     return (
-      <>
-        <li>
-          <NavLink to={{ pathname: "/signin" }} className={Styles.navbarAnchor}>
+      <Fragment>
+        <li onClick={dropDownMenu}>
+          <NavLink to={{ pathname: "/" }} className={Styles.navbarIconLink}>
             <span>
               <img
                 src={USER.photoURL}
-                style={{ width: "30px", height: "30px", borderRadius: "50%" }}
-                alt=""
+                alt={USER.displayName}
+                className={Styles.navbarIcon}
               />
             </span>
-            <span>{USER.displayName}</span>
+            <span>Profile</span>
           </NavLink>
+          <div
+            className={toggle ? "dropDown show" : "dropDown hide"}
+            ref={toggleRef}
+          >
+            <ul>
+              <li>
+                <NavLink to="/myprofile">
+                  <span>
+                    <FaUser />
+                  </span>
+                  My profile
+                </NavLink>
+              </li>
+            </ul>
+          </div>
         </li>
         <li>
           <NavLink to={{ pathname: "/" }} className={Styles.navbarAnchor}>
             Signout
           </NavLink>
         </li>
-      </>
+      </Fragment>
     );
   };
   let GuestUser = () => {
@@ -54,18 +95,20 @@ const Menu = () => {
     );
   };
   return (
-    <ul className={Styles.navbarUl}>
-      <li>
-        <NavLink
-          to={{ pathname: "/" }}
-          activeclassname="active"
-          className={Styles.navbarAnchor}
-        >
-          Home
-        </NavLink>
-      </li>
-      {USER ? <AuthenticatedUser /> : <GuestUser />}
-    </ul>
+    <div ref={myRef} onClick={handleClickOutside} className={Styles.menu}>
+      <ul>
+        <li>
+          <NavLink
+            to={{ pathname: "/" }}
+            activeclassname="active"
+            className={Styles.navbarAnchor}
+          >
+            Home
+          </NavLink>
+        </li>
+        {USER ? <AuthenticatedUser /> : <GuestUser />}
+      </ul>
+    </div>
   );
 };
 
