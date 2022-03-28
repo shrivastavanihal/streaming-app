@@ -42,10 +42,11 @@
 }
 
 .photoURL img {
-  border-radius: 100%;
-  width: 120px;
-  height: 120px;
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
   object-fit: cover;
+  /* overflow: hidden; */
 }
 
 .sidebarMenu ul {
@@ -75,9 +76,60 @@
   font-weight: bold;
 }
 
-
 .sidebarMenu ul li a:hover {
   border-right: 2px solid #b88e10;
   transition: ease-in 0.2s all;
   transform: translate(1);
+}
+
+/* .cameraIcon:hover {
+  position: absolute;
+  top: 25.5%;
+  left: 60%;
+  background-color: #999;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 130px 130px 130px 130px;
+  background-position: center;
+  transform: translate(-50%, -50%);
+}
+
+.photoURL figure {
+  position: relative;
+} */
+
+.asideIcon {
+  width: 130px;
+  height: 130px;
+  border-radius: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.asideIcon main {
+  position: absolute;
+  background-color: #ffc107;
+  width: 100%;
+  text-align: center;
+  bottom: 0px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  cursor: pointer;
+  transition: ease all all 0.7s;
+}
+
+.asideIcon:hover main {
+  opacity: 1;
+}
+
+.asideIcon a {
+  color: #fff;
 }

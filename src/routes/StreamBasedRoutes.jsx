@@ -1,6 +1,8 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
 import Login from "../components/authComponent/Login";
+import PasswordReset from "../components/authComponent/PasswordReset";
+import PhoneAuth from "../components/authComponent/PhoneAuth";
 import Signup from "../components/authComponent/Signup";
 import MyAccount from "../components/profile/MyAccount";
 import MyProfile from "../components/profile/MyProfile";
@@ -21,6 +23,14 @@ const StreamBasedRoutes = () => {
     {
       path: "signup",
       element: <Signup />,
+    },
+    {
+      path: "password-reset",
+      element: <PasswordReset />,
+    },
+    {
+      path: "phone-auth",
+      element: <PhoneAuth />,
     },
     {
       path: "myprofile",

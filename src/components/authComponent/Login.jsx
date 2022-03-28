@@ -28,7 +28,7 @@ const Login = () => {
       if (userData.user.emailVerified === true) {
         toast.success("successfully logged in");
         navigate("/");
-        window.location.reload()
+        window.location.reload();
       } else {
         navigate("/signin");
         toast.error("Invalid username and password");
@@ -86,11 +86,24 @@ const Login = () => {
                 Sign up
               </Link>
             </p>
+            <p style={{ clear: "both", padding: "3px 0" }}>
+              <Link className={Styles.gotoAuthLink} to="/password-reset">
+                Forgot Password
+              </Link>
+            </p>
           </div>
           <div>
             <button className={Styles.btn}>
               {loading ? "Loading.." : "Login"}
             </button>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <Link
+              style={{ textDecoration: "none", color: "#ffc107" }}
+              to="/phone-auth"
+            >
+              Login using Phone Number
+            </Link>
           </div>
         </form>
       </article>

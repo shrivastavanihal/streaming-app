@@ -77,6 +77,13 @@
 
 .gotoAuthLink {
   color: #d8a91d;
-  /* text-decoration: none; */
-  padding: 0px 5px;
+  text-decoration: none;
+  padding: 0px 11px;
+  font-size: 13px;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.gotoAuthLink:hover {
+  color: #fff;
 }

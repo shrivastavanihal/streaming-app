@@ -7,14 +7,23 @@ import React, {
 } from "react";
 import { NavLink } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+import { signOut } from "firebase/auth";
+import { auth } from "../../api/firebase";
 import { AuthContext } from "../../api/AuthContext";
 import Styles from "../navbar/navbar.module.css";
+import { toast } from "react-toastify";
 
 const Menu = () => {
   let [toggle, setToggle] = useState(false);
   let USER = useContext(AuthContext);
   let toggleRef = useRef();
   let myRef = useRef();
+
+  let LogOut = async () => {
+    await signOut(auth);
+    toast.success("Successfully logged out");
+    window.location.assign("/signin");
+  };
 
   let handleClickOutside = e => {
     if (!myRef.current.contains(e.target) && toggle) {
@@ -63,9 +72,9 @@ const Menu = () => {
           </div>
         </li>
         <li>
-          <NavLink to={{ pathname: "/" }} className={Styles.navbarAnchor}>
+          <a href="/signin" onClick={LogOut} className={Styles.navbarAnchor}>
             Signout
-          </NavLink>
+          </a>
         </li>
       </Fragment>
     );
